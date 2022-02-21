@@ -1,11 +1,19 @@
 let conta, mrc = 0;
 let painel = document.getElementsByClassName("painel")[0];
 let teclas = document.querySelectorAll(".teclas");
-let exibirConta = () => painel.innerHTML = conta;
+
+let exibirConta = () => {
+    if (conta == 0) {
+        painel.innerHTML = conta
+        conta = ""
+    } else {
+        painel.innerHTML = conta
+    }
+}
 
 function resolverMRC(value) {
     conta = eval(conta + value + mrc);
-    painel.innerHTML = conta;
+    exibirConta();
     conta = conta.toString();
 }
 
@@ -14,7 +22,7 @@ function salvarMRC() {
 }
 
 function validacao() {
-    if (conta.slice(-1) == "/" || conta.slice(-1) == "*" || conta.slice(-1) == "+" || conta.slice(-1) == "-" || conta.slice(-1) == "%") {
+    if (conta.slice(-1) == "/" || conta.slice(-1) == "*" || conta.slice(-1) == "+" || conta.slice(-1) == "-" || conta.slice(-1) == "%" || conta.slice(-1) == ".") {
         alert("Operação não permitida!");
         return false;
     } else {
@@ -24,7 +32,7 @@ function validacao() {
 
 function resolver() {
     conta = eval(conta);
-    painel.innerHTML = conta;
+    exibirConta();
     conta = conta.toString();
 }
 
@@ -53,7 +61,6 @@ function ligar() {
             conta = conta.slice(0, conta.length - 1);
             exibirConta();
         }
-
     });
 
     // SALVAR MRC
@@ -176,6 +183,15 @@ function ligar() {
         resolver();
     });
 
+    // ADICIONAR PONTO FLUTUANTE
+    teclas[20].addEventListener("click", () => {
+        if (validacao()) {
+            conta = conta + ".";
+            exibirConta();
+        }
+    });
+
+    // DESLIGAR
     teclas[3].addEventListener("click", () => {
         location.reload();
     });
