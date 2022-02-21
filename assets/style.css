@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 18px;
+}
+.flex{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    min-height: 100vh;
+    
+}
+.corpoCalculadora{
+    width:90%;
+    background:#ccc;
+    height:90vh;
+    min-height:280px;
+    min-width:280px;
+}
+header{
+    width:100%;
+    height:20%;
+    padding:10px;
+}
+.painel{
+    width:100%;
+    height:100%;
+    padding:0 5px 5px 0;
+    background-color: rgb(239, 239, 239);
+    justify-content: right;
+    align-items: flex-end;
+    font-size: 2rem;
+    box-shadow: 0px 0px 1px black;
+ 
+}
+main{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: minmax(10px, auto);
+    grid-gap: 10px;
+    padding:10px;
+    height:80%;
+}
+.teclas{
+    width:100%;
+    height:100%;
+    
+}
+.soma{
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 7;
+}
+button{
+    width:100%;
+    height:100%;
+    border-color: aliceblue;
+    font-size:1.3rem;
+    padding:4px;
+}
+main div:nth-child(21) > button, main div:nth-child(16) > button{
+    font-size:2rem;
+}
+main div:nth-child(4) > button{
+    background:rgb(202, 108, 108);
+    border-color:rgb(219, 173, 173);
+}
